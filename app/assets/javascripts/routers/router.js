@@ -5,7 +5,7 @@ Portfolio.Routers.Router = Backbone.Router.extend ({
   
   routes: {
     '':'home',
-	'snake':'snake'
+	'snakes':'snake'
   },
   
   home: function () {

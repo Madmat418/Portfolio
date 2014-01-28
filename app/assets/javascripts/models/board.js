@@ -2,7 +2,7 @@ Portfolio.Models.Board = Backbone.Model.extend({
   initialize: function (dim) {
     this.dim = dim;
     this.snake = new Portfolio.Models.Snake(this);
-  };
+  },
   
   validMove: function (newPos) {
     var max = this.dim
@@ -15,7 +15,7 @@ Portfolio.Models.Board = Backbone.Model.extend({
 	} else {
 	  return false
 	}
-  };
+  },
   
   blankGrid: function (dim) {
     return _.times(dim, function () {
@@ -23,5 +23,5 @@ Portfolio.Models.Board = Backbone.Model.extend({
 	    return Board.BLANK_SYMBOL;
 	  });
 	});
-  };
+  }
 })

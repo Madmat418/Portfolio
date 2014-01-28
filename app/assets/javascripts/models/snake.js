@@ -5,7 +5,7 @@ Portfolio.Models.Snake = Backbone.Model.extend({
 	
 	var center = new Portfolio.Models.Coord(10, 10);
 	this.segments = [center];
-  };
+  },
   
   
   
@@ -14,7 +14,7 @@ Portfolio.Models.Snake = Backbone.Model.extend({
 	"E": new Portfolio.Models.Coord(0, 1),
 	"S": new Portfolio.Models.Coord(1, 0),
 	"W": new Portfolio.Models.Coord(0, -1)
-  };
+  },
   
   move: function () {
     var snake = this;
@@ -30,18 +30,18 @@ Portfolio.Models.Snake = Backbone.Model.extend({
 	} else {
 	  snake.segments = "Game Over";
 	};
-  };
+  },
   
   eatsApple: function(coord) {
     return false;
   
 /*     var apple_coord = this.board.apple.position
 	return (coord.i == apple_coord.i) && (coord.j == apple_coord.j); */
-  };
+  },
   
   turn: function (newDir) {
     if (newDir.i + this.dir !== 0) {
 	  this.dir = newDir;
 	};
-  };
+  }
 })

@@ -17,4 +17,5 @@
 //= require_tree ../templates
 //= require_tree ./views
 //= require_tree ./routers
+//= requrie_tree ./models
 //= require_tree .

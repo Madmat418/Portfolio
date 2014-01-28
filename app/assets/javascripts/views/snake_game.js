@@ -1,7 +1,8 @@
 Portfolio.Views.SnakeGame = Backbone.View.extend ({
-  initialize: function(grid) {
+  
+  initialize: function() {
 	this.board = new Portfolio.Models.Board(20);
-	this.$el = grid
+	this.$el = $('#grid');
 	$(window).keydown(this.handleKeyEvent.bind(this));
 	this.intervalId = window.setInterval(
 	  this.step.bind(this),
