@@ -1,6 +1,7 @@
-Portfolio.Views.SnakeGame = Backbone.View.extend ({
+Portfolio.Models.SnakeGame = Backbone.View.extend ({
   
   initialize: function() {
+    console.log('here');
 	this.board = new Portfolio.Models.Board(20);
 	this.$el = $('#grid');
 	$(window).keydown(this.handleKeyEvent.bind(this));
@@ -43,6 +44,7 @@ Portfolio.Views.SnakeGame = Backbone.View.extend ({
 	  _(row).each(function ($cell) { $rowEl.append($cell) });
 	  view.$el.append($rowEl);
 	});
+	return this;
   },
   
   KEYS: {

@@ -9,7 +9,10 @@ Portfolio.Models.Board = Backbone.Model.extend({
 	var onBoard = function (num) {
 	  return num >= 0 && num < max
 	}
-	
+	console.log('checking move');
+	console.log(newPos);
+	console.log(onBoard(newPos.i));
+	console.log(onBoard(newPos.j));
 	if (onBoard(newPos.i) && onBoard(newPos.j)) {
 	  return true
 	} else {
