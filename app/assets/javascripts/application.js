@@ -13,6 +13,7 @@
 //= require jquery
 //= require underscore
 //= require backbone
+//= require bootstrap
 //= require portfolio
 //= require_tree ../templates
 //= require_tree ./views

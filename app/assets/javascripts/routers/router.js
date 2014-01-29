@@ -5,7 +5,9 @@ Portfolio.Routers.Router = Backbone.Router.extend ({
   
   routes: {
     '':'home',
-	'snakes': 'snake'
+	'snakes': 'snake',
+	'about': 'about',
+	'contact': 'contact'
   },
   
   home: function () {
@@ -15,6 +17,16 @@ Portfolio.Routers.Router = Backbone.Router.extend ({
   
   snake: function () {
     var view = new Portfolio.Views.Snake;
+	this._swapView(view);
+  },
+  
+  about: function () {
+    var view = new Portfolio.Views.About;
+	this._swapView(view);
+  },
+  
+  contact: function() {
+    var view = new Portfolio.Views.Contact;
 	this._swapView(view);
   },
   
