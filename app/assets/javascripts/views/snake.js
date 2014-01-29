@@ -17,12 +17,9 @@ Portfolio.Views.Snake = Backbone.View.extend ({
   },
   
   handleKeyEvent: function(event) {
-    console.log(event);
-	console.log(_(this.KEYS).has(event.keyCode));
     if (_(this.KEYS).has(event.keyCode)) {
 	  this.board.snake.turn(View.KEYS[event.keyCode]);
 	} else {
-	  console.log('not working');
 	  // ignore other key presses
 	}
   },
@@ -30,15 +27,14 @@ Portfolio.Views.Snake = Backbone.View.extend ({
   step:  function () {
     this.board.snake.move();
 	if (this.board.snake.segments === "Game Over") {
-	  console.log('game over')
 	  clearInterval(this.intervalId);
+	  alert('game over');
 	} else {
 	  this.render();
 	}
   },
   
   render: function () {
-    console.log('rendering');
     var view = this;
 	var content = this.template
 	this.$el.html(content); 
@@ -57,12 +53,13 @@ Portfolio.Views.Snake = Backbone.View.extend ({
 	  cellsMatrix[seg.i][seg.j].addClass('snake');
 	});
 	
+	cellsMatrix[board.apple.i][board.apple.j].addClass('apple');
+	
 	this.$el.empty();
 	_(cellsMatrix).each(function (row) {
 	  var $rowEl = $('<div class="row"></div>');
 	  _(row).each(function ($cell) { $rowEl.append($cell) });
 	  view.$el.append($rowEl);
-	  
 	});
 	
 	return view
