@@ -2,6 +2,7 @@ Portfolio.Views.Snake = Backbone.View.extend ({
   template: JST['snake'],
   
   initialize: function () {
+    console.log(this.template);
     this.board = new Portfolio.Models.Board(20);
 	this.KEYS = {
       38: "N",
@@ -12,13 +13,13 @@ Portfolio.Views.Snake = Backbone.View.extend ({
 	$(window).keydown(this.handleKeyEvent.bind(this));
 	this.intervalId = window.setInterval(
 	  this.step.bind(this),
-	  View.STEP_MILLIS
+	  200
 	);
   },
   
   handleKeyEvent: function(event) {
     if (_(this.KEYS).has(event.keyCode)) {
-	  this.board.snake.turn(View.KEYS[event.keyCode]);
+	  this.board.snake.turn(this.KEYS[event.keyCode]);
 	} else {
 	  // ignore other key presses
 	}

@@ -14,8 +14,8 @@ Portfolio.Models.SnakeGame = Backbone.View.extend ({
   STEP_MILLIS: 200,
   
   handleKeyEvent: function (event) {
-    if (_(View.KEYS).has(event.keyCode)) {
-	  this.board.snake.turn(View.KEYS[event.keyCode]);
+    if (_(this.KEYS).has(event.keyCode)) {
+	  this.board.snake.turn(this.KEYS[event.keyCode]);
 	} else {
 	  // ignore other key presses
 	}
