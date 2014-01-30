@@ -1,5 +1,5 @@
 Portfolio.Views.AsteroidsGame = Backbone.View.extend ({
-  template: JST['space'],
+  template: JST['games/space'],
   
   initialize: function() {
     console.log(this.template);

@@ -1,5 +1,5 @@
 Portfolio.Views.Snake = Backbone.View.extend ({
-  template: JST['snake'],
+  template: JST['games/snake'],
   
   initialize: function () {
     console.log(this.template);
