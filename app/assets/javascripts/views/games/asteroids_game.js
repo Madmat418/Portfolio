@@ -2,31 +2,51 @@ Portfolio.Views.AsteroidsGame = Backbone.View.extend ({
   template: JST['games/space'],
   
   initialize: function() {
-    console.log(this.template);
     this.dimX = 800;
 	this.dimY = 600;
 	this.level = 1;
-	
-	console.log('before asteroids');
+	this.ship = new Portfolio.Models.Ship(this);
+	this.bullets = [];
 	this.asteroids = [];
-	this.addAsteroids(this.level * 5, this);
+	this.addAsteroids(this.level * 5);
+	$(window).keydown(this.keyAction.bind(this));
 	console.log('after asteroids');
 	
+  },
+  
+  removeAsteroid: function(object) {
+    var that = this;
+    var oldArray = this.asteroids;
+	this.asteroids = [];
+	console.log('removing');
+	
+	oldArray.forEach( function (asteroid) {
+	  if (asteroid !== object) {
+	    that.asteroids.push(asteroid);
+	  }
+	})
+  },
+  
+  removeBullet: function(object) {
+    var that = this;
+    var oldArray = this.bullets;
+	this.bullets = [];
+	
+	oldArray.forEach( function (bullet) {
+	  if (bullet !== object) {
+	    that.bullets.push(bullet);
+	  }
+	})
   },
   
   render: function() {
     var content = this.template;
 	this.$el.html(content);
-	console.log(this.template);
     var canvas = this.$('#canvas')[0];
 	this.ctx = canvas.getContext('2d');
 	this.start();
 
 	return this;
-  },
-  
-  events: {
-    'keydown': 'keyAction'
   },
   
   addAsteroids: function(num) {
@@ -63,10 +83,8 @@ Portfolio.Views.AsteroidsGame = Backbone.View.extend ({
 
   	oldAsteroids.forEach(function (asteroid) {
   	  if (game.inBounds(asteroid)) {
-	    console.log('in');
 	    game.asteroids.push(asteroid);
   	  } else {
-	    console.log('out');
 	    game.addAsteroids(1);
 	    
 	  }
@@ -89,22 +107,34 @@ Portfolio.Views.AsteroidsGame = Backbone.View.extend ({
     var game = this;
   	game.ctx.clearRect(0, 0, game.dimX, game.dimY);
     this.asteroids.forEach(function(element) {element.draw(game.ctx)});
+	this.bullets.forEach(function(element) {element.draw(game.ctx)})
+	this.ship.draw(game.ctx);
   },
   
   move: function() {
     var game = this;
   	this.asteroids.forEach(function(element) {element.move()});
+	this.bullets.forEach(function(element) {element.move()});
+	this.ship.move();
   },
   
   step: function() {
-    console.log('stepping');
+    var that = this;
     this.move();
   	this.checkInBounds();
+	this.bullets.forEach( function(bullet) {
+	  if (that.checkCollisions(bullet)) {
+	    that.removeBullet(bullet);
+	  }
+	})
+	if (this.asteroids.length === 0) {
+	  that.level += 1
+	  that.addAsteroids(that.level * 5);
+	}
   	this.draw();
   },
   
   start: function() {
-    console.log('started');
     var game = this;
   	game.timer = setInterval(game.step.bind(game), 30);
   }
