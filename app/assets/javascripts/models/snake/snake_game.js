@@ -1,4 +1,4 @@
-Portfolio.Models.SnakeGame = Backbone.View.extend ({
+Portfolio.Models.SnakeGame = Backbone.Model.extend ({
   
   initialize: function() {
     console.log('here');

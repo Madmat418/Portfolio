@@ -2,7 +2,7 @@ Portfolio.Views.Snake = Backbone.View.extend ({
   template: JST['games/snake'],
   
   initialize: function () {
-    console.log(this.template);
+    alert("I am currently experiencing some conflicts with Internet Explorer.  For optimal experience, run in Google Chrome.");
     this.board = new Portfolio.Models.Board(20);
 	this.KEYS = {
       38: "N",
