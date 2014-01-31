@@ -13,7 +13,7 @@ Portfolio.Views.Snake = Backbone.View.extend ({
 	$(window).keydown(this.handleKeyEvent.bind(this));
 	this.intervalId = window.setInterval(
 	  this.step.bind(this),
-	  200
+	  100
 	);
   },
   

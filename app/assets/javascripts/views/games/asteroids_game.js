@@ -127,7 +127,11 @@ Portfolio.Views.AsteroidsGame = Backbone.View.extend ({
 	  if (that.checkCollisions(bullet)) {
 	    that.removeBullet(bullet);
 	  }
-	})
+	});
+	if (that.checkCollisions(that.ship)) {
+	  alert("Game Over");
+	  clearInterval(that.timer);
+	}
 	if (this.asteroids.length === 0) {
 	  that.level += 1
 	  that.addAsteroids(that.level * 5);

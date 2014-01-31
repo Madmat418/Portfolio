@@ -27,17 +27,17 @@ Portfolio.Models.Board = Backbone.Model.extend({
 	var that = this;
     var x = Math.round(Math.random() * 19);
 	var y = Math.round(Math.random() * 19);
-	var snakeSegments = [];
+	var repeated = false;
 	this.snake.segments.forEach(function(seg) {
-	  snakeSegments.push([seg.i, seg.j]);
-	});
-	var check = snakeSegments.forEach(function(seg) { 
 	  if (seg.i === x && seg.j === y) {
-	    return that.generateApple();
+	    repeated = true;
 	  }
-	})
-	return new Portfolio.Models.Coord([x,y]);
-
+	});
+	if (repeated) {
+	  return that.generateApple();
+	} else {
+	  return new Portfolio.Models.Coord([x,y]);
+    }
   },
   
   replaceApple: function() {
