@@ -1,3 +1,46 @@
 <body>
   <div id="grid"></div>
+  <%= counter %>
+<div class='modal'  id='score-modal'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+	  <div class='modal-header'>
+	    <h4>Game Over</h4>
+	  </div>
+	  <div class='modal-body'>
+	    <form id='score'>
+		  <lable for='name'>Enter Your Name:</lable>
+		  <input type='text' name='score[name]' id='name'>
+		  <input type='hidden' name='score[score]' value='<%= counter %>'>
+		</form>
+	  </div>
+	  <div class='modal-footer'>
+	    <button type="button" class="btn btn-default" id='hide-scorer'>Close</button>
+	    <button type="button" class="btn btn-primary" id='submit'>Submit Your High Score!</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class='modal'  id='high-score-modal'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+	  <div class='modal-header'>
+	    <h4>High Scores</h4>
+	  </div>
+	  <div class='modal-body' id='high-scores'>		  
+	  </div>
+	  <div class='modal-footer'>
+	    <button type="button" class="btn btn-default" id='hide-scores'>Close</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+
+<button type='button' class='btn btn-primary' id='new-game'>New Game</button>
+<button type='button' class='btn btn-primary' id='high-scores'>High Scores</button>
+		  
+	  
 </body>  

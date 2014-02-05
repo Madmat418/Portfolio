@@ -11,12 +11,15 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.serializeJSON
+//= require jquery_ujs
 //= require underscore
 //= require backbone
 //= require bootstrap
 //= require portfolio
 //= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
-//= requrie_tree ./models
 //= require_tree .

@@ -1,0 +1,18 @@
+#container { 
+  position: relative;
+}
+#imageView { 
+  border: 1px solid #000; 
+  background: #eee;
+}
+#imageTemp {
+  position: absolute; 
+  top: 1px; 
+  left: 1px; 
+  z-index: 1000; 
+}
+#imageTrace {
+  position: absolute; 
+  top: 1px; 
+  left: 1px; 
+}

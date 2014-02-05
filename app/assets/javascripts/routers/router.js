@@ -10,11 +10,19 @@ Portfolio.Routers.Router = Backbone.Router.extend ({
 	'contact': 'contact',
 	'asteroids': 'asteroids',
 	'resume': 'resume',
-	'projects': 'projects'
+	'projects': 'projects',
+	'gravity': 'gravity'
+	
   },
   
   home: function () {
     var view = new Portfolio.Views.Home;
+	this._swapView(view);
+  },
+  
+  gravity: function () {
+    console.log('gravity');
+    var view = new Portfolio.Views.Gravity;
 	this._swapView(view);
   },
   

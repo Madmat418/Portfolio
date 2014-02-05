@@ -2,7 +2,6 @@ Portfolio.Views.AsteroidsGame = Backbone.View.extend ({
   template: JST['games/space'],
   
   initialize: function() {
-    alert("I am currently experiencing some conflicts with Internet Explorer.  For optimal experience, run in Google Chrome.");
     this.dimX = 800;
 	this.dimY = 600;
 	this.level = 1;

@@ -1,5 +1,6 @@
 Portfolio.Models.Board = Backbone.Model.extend({
-  initialize: function (dim) {
+  initialize: function (dim, game) {
+    this.view = game;
     this.dim = dim;
     this.snake = new Portfolio.Models.Snake(this);
 	this.apple = this.generateApple();
@@ -36,19 +37,12 @@ Portfolio.Models.Board = Backbone.Model.extend({
 	if (repeated) {
 	  return that.generateApple();
 	} else {
+	  that.view.counter += 10;
 	  return new Portfolio.Models.Coord([x,y]);
     }
   },
   
   replaceApple: function() {
     this.apple = this.generateApple();
-  },
-  
-  blankGrid: function (dim) {
-    return _.times(dim, function () {
-	  return _.times(dim, function () {
-	    return Board.BLANK_SYMBOL;
-	  });
-	});
   }
 })

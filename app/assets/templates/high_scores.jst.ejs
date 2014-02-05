@@ -1,0 +1,5 @@
+<ol>
+  <% collection.forEach(function(high_score) { %>
+    <li><%= high_score.escape('score') %>   <%= high_score.escape('name') %></li>
+  <%}) %>	
+</ol>	
