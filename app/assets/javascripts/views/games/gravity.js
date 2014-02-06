@@ -66,7 +66,6 @@ Portfolio.Views.Gravity = Backbone.View.extend ({
     this.getXY(ev);
 	if (this.dragging) {
 	  this.solarSystem.moons[0].pos = [ev._x, ev._y]
-	  this.solarSystem.step(this.context);
 	} else if (!this.started) {
       return;
     } else {
