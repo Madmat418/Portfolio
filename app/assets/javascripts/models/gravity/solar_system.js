@@ -9,6 +9,7 @@ Portfolio.Models.SolarSystem = Backbone.Model.extend({
   },
   
   step: function(ctx) {
+    var that = this;
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.planet.draw(ctx);
     this.moons.forEach(function(moon) {
@@ -16,6 +17,7 @@ Portfolio.Models.SolarSystem = Backbone.Model.extend({
 	    moon.accelerate();
 	    moon.move();
 	    if (moon.tracing) {
+		  that.counter = 0
 	      moon.trace();
 	    }
 	  }

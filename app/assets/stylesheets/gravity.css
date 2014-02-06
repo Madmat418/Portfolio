@@ -4,6 +4,7 @@
 #imageView { 
   border: 1px solid #000; 
   background: #eee;
+  z-index: 999;
 }
 #imageTemp {
   position: absolute; 
