@@ -2,21 +2,32 @@ Portfolio.Models.Moon = Backbone.Model.extend({
   initialize: function(options) {
     this.canvas = options.canvas;
     this.tracer = document.createElement('canvas');
-	var container = this.canvas.parentNode
+	this.container = this.canvas.parentNode
+	this.tracer.id = 'imageTrace';
+	this.tracer.className = 'tracedImages';
+	console.log(this.tracer.className);
+    this.tracer.width = this.canvas.width;
+	this.tracer.height = this.canvas.height;
+	this.container.appendChild(this.tracer);
+	this.ctx = this.tracer.getContext('2d');
+    this.pos = [this.canvas.width / 4, this.canvas.height / 2]
+	this.vel = [0, 0]
+	this.color = 'red';
+	this.radius = 10;
+	this.planet = options.planet;
+	this.movable = false;
+	this.started = false;
+	this.tracing = options.tracing;
+  },
+  
+  newTrace: function() {
+    this.tracer = document.createElement('canvas');
 	this.tracer.id = 'imageTrace';
     this.tracer.width = this.canvas.width;
 	this.tracer.height = this.canvas.height;
-	container.appendChild(this.tracer);
-	this.ctx = this.tracer.getContext('2d');
-    this.pos = options.pos;
-	this.vel = options.vel;
-	this.color = options.color;
-	this.radius = options.radius;
-	this.planet = options.planet;
-	this.tracer = options.tracer
-	this.movable = false;
-	this.started = false;
-	this.tracing = true;
+	this.container.appendChild(this.tracer);
+    this.ctx = this.tracer.getContext('2d');
+    this.tracer.className = 'tracedImages';
   },
   
   accelerate: function() {

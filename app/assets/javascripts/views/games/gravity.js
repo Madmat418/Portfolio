@@ -2,6 +2,7 @@ Portfolio.Views.Gravity = Backbone.View.extend ({
   template: JST['games/gravity'],
   
   start: function() {
+
     this.dimX = this.canvas.width;
     this.dimY = this.canvas.height;
     this.container = this.canvas.parentNode;
@@ -15,16 +16,45 @@ Portfolio.Views.Gravity = Backbone.View.extend ({
 	this.tempContext = this.tempCanvas.getContext('2d');
 	this.started = false;
 	this.dragging = false;
+	this.tracing = true;
   },
   
   events: {
+    'click #reset': 'reset',
     'mousedown #imageTemp': 'onMouseDown',
 	'mouseup #imageTemp': 'onMouseUp',
-	'mousemove #imageTemp': 'onMouseMove'
+	'mousemove #imageTemp': 'onMouseMove',
+	'click #trace-reset': 'resetTrace',
+	'click #trace-toggle': 'toggleTrace'
   },
   
-  test: function(event) {
-    console.log(event);
+  resetTrace: function() {
+    var traces = $('.tracedImages');
+    traces.each(function(index, trace) {
+	  trace.remove();
+	})
+	this.solarSystem.moons.forEach(function(moon) {
+	  moon.newTrace();
+	})
+  },
+  
+  toggleTrace: function() {
+    var that = this;
+	that.tracing = !that.tracing;
+    that.solarSystem.moons.forEach(function(moon) {
+	  if (!moon.tracing) {
+	    moon.newTrace();
+	  }
+	  moon.tracing = that.tracing;
+	});
+  },
+  
+  reset: function() {
+    this.solarSystem.moons.forEach(function(moon) {
+      moon.destroy();
+    });
+    this.solarSystem.destroy();
+    this.render();
   },
   
   render: function() {
@@ -89,7 +119,8 @@ Portfolio.Views.Gravity = Backbone.View.extend ({
       this.onMouseMove(ev);
 	  this.started = false;
 	  var moon = this.solarSystem.moons[0];
-	  this.solarSystem.moons.unshift(new Portfolio.Models.Moon({planet: moon.planet, pos: [this.dimX / 4, this.dimY / 2], vel: [0, 0], radius: 10, color: 'red', canvas: moon.canvas}));
+	  console.log(this.tracing);
+	  this.solarSystem.moons.unshift(new Portfolio.Models.Moon({planet: this.solarSystem.planet, canvas: this.canvas, tracing: this.tracing}));
 	  moon.movable = true;
 	  moon.vel = [(this.x0 - this.x1) / 30, (this.y0 - this.y1) / 30]
 	  this.tempContext.clearRect(0, 0, this.dimX, this.dimY);
