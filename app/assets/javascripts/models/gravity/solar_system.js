@@ -5,7 +5,7 @@ Portfolio.Models.SolarSystem = Backbone.Model.extend({
 	this.ctx = options.ctx;
 	this.planet = new Portfolio.Models.Planet(this.canvas);
 	this.moons = [new Portfolio.Models.Moon({planet: this.planet, canvas: this.canvas, tracing: true})];
-	setInterval(function() {system.step(system.ctx)}, 20)
+	this.interval = setInterval(function() {system.step(system.ctx)}, 20)
   },
   
   step: function(ctx) {

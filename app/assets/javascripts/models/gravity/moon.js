@@ -54,6 +54,8 @@ Portfolio.Models.Moon = Backbone.Model.extend({
 	  this.ctx.lineTo(this.pos[0], this.pos[1]);
 	  this.ctx.stroke();
 	}
+	
+	console.log('tracing');
 
   },
   

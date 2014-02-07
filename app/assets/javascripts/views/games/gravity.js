@@ -51,8 +51,10 @@ Portfolio.Views.Gravity = Backbone.View.extend ({
   
   reset: function() {
     this.solarSystem.moons.forEach(function(moon) {
+	  moon.tracer.remove();
       moon.destroy();
     });
+	clearInterval(this.solarSystem.interval);
     this.solarSystem.destroy();
     this.render();
   },
