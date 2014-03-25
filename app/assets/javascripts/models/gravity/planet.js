@@ -5,6 +5,7 @@ Portfolio.Models.Planet = Backbone.Model.extend({
     this.radius = 20;
     this.color = "blue";
 	this.mass = 40;
+	
   },
   
   draw: function(ctx) {

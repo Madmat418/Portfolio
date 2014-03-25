@@ -48,7 +48,7 @@ Portfolio.Models.Moon = Backbone.Model.extend({
   trace: function() {
     if (!this.started) {
       this.ctx.beginPath();
-	  this.ctx.moveTo(this.pos[0], this.pos[1]);
+	  this.ctx.lineTo(this.pos[0], this.pos[1]);
 	  this.started = true;		  
 	} else {
 	  this.ctx.lineTo(this.pos[0], this.pos[1]);

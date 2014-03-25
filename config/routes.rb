@@ -3,4 +3,5 @@ Portfolio::Application.routes.draw do
   resources :snakes, :only => [:index]
   resources :asteroids, :only => [:index]
   resources :snake_scores, :only => [:create, :index]
+  get 'chatRoom', :to => 'chat#index'
 end
