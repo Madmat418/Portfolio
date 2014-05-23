@@ -7,25 +7,25 @@ Portfolio.Views.Gravity = Backbone.View.extend ({
     this.dimY = this.canvas.height;
     this.container = this.canvas.parentNode;
     this.context = this.canvas.getContext('2d');
-	this.solarSystem = new Portfolio.Models.SolarSystem({ctx: this.context, canvas: this.canvas});
+    this.solarSystem = new Portfolio.Models.SolarSystem({ctx: this.context, canvas: this.canvas});
     this.tempCanvas = document.createElement('canvas');
     this.tempCanvas.id = 'imageTemp';
     this.tempCanvas.width = this.canvas.width;
     this.tempCanvas.height = this.canvas.height;
-	this.container.appendChild(this.tempCanvas);
-	this.tempContext = this.tempCanvas.getContext('2d');
-	this.started = false;
-	this.dragging = false;
-	this.tracing = true;
+    this.container.appendChild(this.tempCanvas);
+    this.tempContext = this.tempCanvas.getContext('2d');
+    this.started = false;
+    this.dragging = false;
+    this.tracing = true;
   },
   
   events: {
     'click #reset': 'reset',
     'mousedown #imageTemp': 'onMouseDown',
-	'mouseup #imageTemp': 'onMouseUp',
-	'mousemove #imageTemp': 'onMouseMove',
-	'click #trace-reset': 'resetTrace',
-	'click #trace-toggle': 'toggleTrace'
+    'mouseup #imageTemp': 'onMouseUp',
+    'mousemove #imageTemp': 'onMouseMove',
+    'click #trace-reset': 'resetTrace',
+    'click #trace-toggle': 'toggleTrace'
   },
   
   resetTrace: function() {
